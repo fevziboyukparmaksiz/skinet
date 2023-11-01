@@ -24,16 +24,17 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
-
 app.UseSwagger();
 app.UseSwaggerUI();
-
 
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
+app.UseCors("CorsPolicy");
+
 app.UseAuthorization();
+
 
 app.MapControllers();
 
