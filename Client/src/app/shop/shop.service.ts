@@ -14,11 +14,12 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(brandId?: number, typeId?: number): Observable<Pagination<Product[]>> {
+  getProducts(brandId?: number, typeId?: number, sort?: string): Observable<Pagination<Product[]>> {
     let params = new HttpParams();
 
     if (brandId) params = params.append('brandId', brandId);
     if (typeId) params = params.append('typeId', typeId);
+    if (sort) params = params.append('sort', sort);
 
     return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products', { params });
   }
